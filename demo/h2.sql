@@ -39,7 +39,7 @@ insert into product(id, name, description, marketId) values (null, 'Amazon', 'In
 insert into market(id, name) values(null, 'Eletrodomesticos');
 insert into technologies(id, name) values(null, 'Kotlin');
 insert into market(id, name) values(null, 'Eletronicos');
-insert into technologies(id, name) values(null, 'C#');
+insert into technologies(id, name) values(null, 'TypeScript');
 
 insert into product(id, name, description, marketId) values (null, 'Carrefour', 'Integração com Carrefour', 1);
 

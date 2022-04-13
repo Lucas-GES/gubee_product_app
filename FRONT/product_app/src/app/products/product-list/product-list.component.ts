@@ -13,13 +13,13 @@ export class ProductListComponent implements OnInit {
   products$!: Observable<Product[]>;
 
   checkedTech: any = [];
-
+  
   constructor(
     private service: Products2Service
   ) { }
 
   ngOnInit(): void {
-    this.onRefresh();   
+    this.onRefresh();    
   }
 
   onRefresh() {
@@ -36,13 +36,16 @@ export class ProductListComponent implements OnInit {
   handleError() {
     alert("Error 404");
   }
+ 
 
   techChecked(technology: string){
     if(this.checkedTech.includes(technology)){
       this.checkedTech = this.checkedTech.filter((e: string) => e != technology);
     }else{
       this.checkedTech.push(technology);
+      console.log(technology);
     }
+    
   }
 
   filterTech(){

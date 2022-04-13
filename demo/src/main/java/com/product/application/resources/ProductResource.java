@@ -5,6 +5,7 @@ import com.product.application.repositories.ProductRepository;
 import com.product.application.services.ProductService;
 import com.product.db.DbException;
 import com.product.entities.Product;
+import com.product.entities.Technology;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,8 +25,6 @@ public class ProductResource implements ProductRepository {
         try(PreparedStatement st = conn.prepareStatement(query)){
             try(ResultSet rs = st.executeQuery()){
                 List<Product> list = new ArrayList<>();
-                Map<Integer, Product> map = new HashMap<>();
-
 
                 list.addAll(productService.instantiateProduct(rs));
 
@@ -57,22 +56,12 @@ public class ProductResource implements ProductRepository {
     @Override
     public List<Product> filterTechnologies(List<String> names) {
         List<Product> list = new ArrayList<>();
-        List<Integer> integerList = new ArrayList<>();
-        for(String s : names) integerList.add(Integer.valueOf(s));
-        for(Integer i : integerList) {
-            String query = String.format("""
-                    SELECT product.id,product.name, product.description, market.name, technologies.name
-                    FROM product
-                    join market on product.marketId = market.id                        
-                    join product_tech on product_tech.product_id = product.id
-                    join technologies on technologies.id = product_tech.tech_id
-                    WHERE technologies.id = %d                            
-                    """, i);
-
-            for(Product p :  prepareStatement(query)){
-                list.add(p);
+        for(Product p : findAll()){
+            for(Technology t : p.getTechnology()){
+                if(names.contains(t.getName())){
+                    list.add(p);
+                }
             }
-
         }
         return list;
     }
