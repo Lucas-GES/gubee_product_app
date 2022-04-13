@@ -1,0 +1,17 @@
+.container {
+    padding-top: 20px;
+}
+
+.menu {
+    background-color: gray;
+    padding-top: 10px;
+}
+
+.list {
+    padding-top: 10px;    
+}
+
+.list nav-item {
+    text-align: center;
+}
+

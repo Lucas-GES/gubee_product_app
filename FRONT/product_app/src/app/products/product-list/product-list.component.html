@@ -1,0 +1,89 @@
+<div class="container">
+    <div class="card top">
+        <div class="card-header">
+            Produtos
+        </div>
+        <div class="card-body">
+            <p>
+                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse"
+                    aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Filtro</button>
+            </p>
+            <div class="row">
+                <div class="col">
+                    
+                    <div class="collapse multi-collapse" id="multiCollapseExample1">
+                        <h3>Market</h3>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary" (click)="filterMarket('Moveis')">
+                              Moveis
+                            </button>
+                            <br>
+                            <button type="button" class="btn btn-primary" (click)="filterMarket('Eletrodomesticos')">
+                              Eletrodomesticos
+                            </button>
+                            <br>
+                            <button type="button" class="btn btn-primary" (click)="filterMarket('Eletronicos')">
+                              Eletronicos
+                            </button>                            
+                          </div>                          
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="collapse multi-collapse" id="multiCollapseExample2">
+                        <h3>Tecnologia</h3>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                              Tecnologia
+                            </button>
+                            <ul class="dropdown-menu">
+                              
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" (change)="techChecked('1')">
+                                    <label class="form-check-label" >Java</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="checkbox" (change)="techChecked('2')">
+                                  <label class="form-check-label" >Kotlin</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" (change)="techChecked('3')">
+                                <label class="form-check-label" >C#</label>
+                            </div>
+                                                               
+                            </ul>
+                          </div> 
+                          <input class="btn btn-primary" type="submit" (click)="filterTech()">
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Mercado Alvo</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Tecnologia</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let product of products$ | async">
+              <tr>
+                <th scope="row">{{ product.id }}</th>
+                <td>{{ product.name }}</td>
+                <td>{{ product.market.name }}</td>
+                <td>{{ product.productDescription }}</td>
+                <td *ngFor="let tech of product.technology">
+                    <span>{{ tech.name }}</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+    </div>
+
+</div>
