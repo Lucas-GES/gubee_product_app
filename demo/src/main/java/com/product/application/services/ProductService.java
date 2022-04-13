@@ -17,7 +17,7 @@ public class ProductService {
                     rs.getString("product.name"),
                     rs.getString("product.description"),
                     rs.getString("market.name"),
-                    List.of(rs.getString("technologies.name")));
+                    rs.getString("technologies.name"));
             products.add(product);
         }
 
@@ -25,17 +25,21 @@ public class ProductService {
     }
 
     private Product mergeProduct(Product a, Product b){
-        a.insertTechByTech(b.getTechnology());
+        if(a.getTechnology() != b.getTechnology()) {
+            a.insertTechByTech(b.getTechnology());
+        }
         return a;
     }
 
     private List<Product> getDistinctProducts(List<Product> products){
-        Map<Integer, List<Product>> productList
+        var groupedById
                 = products.stream().collect(Collectors.groupingBy(Product::getId));
-        List<Product> mergedProducts = productList.values().stream()
-                .map(group -> group.stream().reduce((a,b) -> mergeProduct(a,b)).get())
-                .collect(Collectors.toList());
-        return mergedProducts;
+        return groupedById.values().stream()
+                .map(group -> {
+                    var first = group.iterator().next();
+                    group.forEach(next -> mergeProduct(first, next));
+                    return first;
+                }).collect(Collectors.toList());
     }
 
 }

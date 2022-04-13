@@ -19,7 +19,7 @@ public class Product {
     public Product(){
     }
 
-    public Product(Integer id, String name, String productDescription, String market, List<String> technology) {
+    public Product(Integer id, String name, String productDescription, String market, String technology) {
         this.id = id;
         this.name = name;
         this.productDescription = productDescription;
@@ -27,16 +27,12 @@ public class Product {
         this.insertTechnology(technology);
     }
 
-    public void insertTechnology(List<String> technology){
-        for(String t : technology){
-            this.technology.add(new Technology(t));
-        }
+    public void insertTechnology(String technology){
+        this.technology.add(new Technology(technology));
     }
 
     public void insertTechByTech(List<Technology> technologies){
-        for(Technology tech: technology){
-            this.technology.add(new Technology(tech.getName()));
-        }
+        this.technology.addAll(technologies);
     }
 
     public Integer getId() {
