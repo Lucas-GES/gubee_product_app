@@ -1,4 +1,4 @@
-package com.product.entities;
+package com.product.domain;
 
 
 import java.util.ArrayList;

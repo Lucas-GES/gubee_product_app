@@ -1,4 +1,4 @@
-package com.product.db;
+package com.product.adapter.out.persistence.utils;
 
 public class DbException extends RuntimeException{
 

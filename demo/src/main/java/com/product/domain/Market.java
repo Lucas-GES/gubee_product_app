@@ -1,15 +1,16 @@
-package com.product.entities;
+package com.product.domain;
 
-public class Technology {
+
+public class Market {
 
     private Integer id;
 
     private String name;
 
-    public Technology() {
+    public Market() {
     }
 
-    public Technology(String name) {
+    public Market(String name) {
         this.name = name;
     }
 
@@ -24,4 +25,5 @@ public class Technology {
     public void setName(String name) {
         this.name = name;
     }
+
 }
