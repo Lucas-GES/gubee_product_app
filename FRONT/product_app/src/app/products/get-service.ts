@@ -11,11 +11,13 @@ export class GetService<T> {
         return this.http.get<T[]>(`${this.API_URL}market/${filter}`)
     }
 
-    techFilter(filter: any[]){
-        let tech: string = '';
-        for(let i = 0; i< filter.length; i++){
-            tech += filter[i] + ',';
+    techFilter(filter?: string[]){
+        let tech: string = '';        
+        if(filter != undefined){
+            filter.forEach(technology => {
+                tech += `${technology}&`;
+            });
         }
-        return this.http.get<T[]>(`${this.API_URL}technology?arr=${filter}`)
+        return this.http.get<T[]>(`${this.API_URL}technology?arr=${tech}`)
     }
 }

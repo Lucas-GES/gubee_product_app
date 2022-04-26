@@ -1,9 +1,6 @@
 package com.product.adapter.out.persistence;
 
-
-import com.product.adapter.out.persistence.utils.DB;
 import com.product.application.port.in.ProductRepository;
-import com.product.application.service.ProductService;
 import com.product.adapter.out.persistence.utils.DbException;
 import com.product.domain.Product;
 import com.product.domain.Technology;
@@ -63,6 +60,8 @@ public class ProductRepositoryImplementation implements ProductRepository {
                 }
             }
         }
+
+        // return findAll().stream().filter(p -> p.getTechnology().stream().anyMatch(names::contains)).collect(Collectors.toList());
         return list;
     }
 
@@ -93,7 +92,7 @@ public class ProductRepositoryImplementation implements ProductRepository {
     }
 
     private Product mergeProduct(Product a, Product b){
-        if(a.getTechnology() != b.getTechnology()) {
+        if(!a.getTechnology().equals(b.getTechnology())) {
             a.insertTechByTech(b.getTechnology());
         }
         return a;

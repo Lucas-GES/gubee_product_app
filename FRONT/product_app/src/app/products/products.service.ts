@@ -27,11 +27,15 @@ export class ProductsService{
         );
     }
 
-    techFilter(filter: any[]){
-        let tech: string = '';
-        for(let i = 0; i< filter.length; i++){
-            tech += filter[i] + ',';
+    techFilter(filter?: string[]){
+        let tech = `${this.API}/technology?`;
+        if(filter != undefined){
+            filter.forEach(technology => {
+                tech += `arr=${technology}&`;
+            });
         }
-        return this.http.get<Product[]>(`${this.API}/technology?arr=${filter}`)
+       
+        console.log(tech);
+        return this.http.get<Product[]>(tech);
     }
 }

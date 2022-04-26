@@ -35,9 +35,8 @@ public class ProductController {
 
     @GET
     @Path("technology")
-    public Response filterTechnology(@QueryParam("arr") String name){
-        List<String> technologies = List.of(name.split(","));
-        return Response.ok(service.findTechnology(technologies)).build();
+    public Response filterTechnology(@QueryParam("arr") List<String> name){
+        return Response.ok(service.findTechnology(name)).build();
     }
 
 }
