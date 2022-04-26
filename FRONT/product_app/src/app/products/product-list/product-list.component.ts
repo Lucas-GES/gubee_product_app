@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { catchError, EMPTY, Observable } from 'rxjs';
-import { Product } from '../product';
 import { Products2Service } from '../products2.service';
 
 @Component({
@@ -10,7 +9,7 @@ import { Products2Service } from '../products2.service';
 })
 export class ProductListComponent implements OnInit {
 
-  products$!: Observable<Product[]>;
+  products$!: Observable<any[]>;
 
   checkedTech: any = [];
 
