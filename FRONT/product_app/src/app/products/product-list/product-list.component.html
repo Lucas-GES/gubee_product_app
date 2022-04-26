@@ -9,22 +9,15 @@
           aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Filtro</button>
       </p>
       <div class="row">
-        <div class="col">
+        <div class="row">
 
           <div class="collapse multi-collapse" id="multiCollapseExample1">
             <h3>Market</h3>
-            <div class="btn-group">
-              <button type="button" class="btn btn-primary" (click)="filterMarket('Moveis')">
-                Moveis
+            <div class="btn-group" *ngFor="let market of marketNames">
+              <button type="button" class="btn btn-primary" (click)="filterMarket(market)">
+                {{ market }}
               </button>
               <br>
-              <button type="button" class="btn btn-primary" (click)="filterMarket('Eletrodomesticos')">
-                Eletrodomesticos
-              </button>
-              <br>
-              <button type="button" class="btn btn-primary" (click)="filterMarket('Eletronicos')">
-                Eletronicos
-              </button>
             </div>
           </div>
         </div>
@@ -38,17 +31,9 @@
               </button>
               <ul class="dropdown-menu">
 
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" (change)="techChecked('Java')">
-                  <label class="form-check-label">Java</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" (change)="techChecked('Kotlin')">
-                  <label class="form-check-label">Kotlin</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" (change)="techChecked('TypeScript')">
-                  <label class="form-check-label">TypeScript</label>
+                <div class="form-check form-check-inline" *ngFor="let tech of technologyNames">
+                  <input class="form-check-input" type="checkbox" (change)="techChecked(tech)">
+                  <label class="form-check-label">{{ tech }}</label>
                 </div>
 
               </ul>

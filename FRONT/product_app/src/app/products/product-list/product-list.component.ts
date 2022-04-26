@@ -13,6 +13,10 @@ export class ProductListComponent implements OnInit {
   products$!: Observable<Product[]>;
 
   checkedTech: any = [];
+
+  marketNames: any = [];
+
+  technologyNames: any = [];
   
   constructor(
     private service: Products2Service
@@ -20,6 +24,8 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.onRefresh();    
+    this.findMarketNames(this.products$);
+    this.findTechNames(this.products$);
   }
 
   onRefresh() {
@@ -36,7 +42,36 @@ export class ProductListComponent implements OnInit {
   handleError() {
     alert("Error 404");
   }
- 
+
+  findMarketNames(products: any){
+    let market: any = [];    
+    products.forEach((product:any) => {
+      product.forEach((obj: any) => {
+        market.push(obj.market);
+        market.forEach((names: any)=> {
+          if(!this.marketNames.includes(names.name)){
+            this.marketNames.push(names.name);
+          }
+        })
+      });        
+    });   
+  }
+
+  findTechNames(products: any){
+    let tech: any = [];
+    products.forEach((product:any) => {
+      product.forEach((obj:any) => {
+        tech.push(obj.technology)
+        tech.forEach((techName:any)=> {
+          techName.forEach((names: any)=>{
+            if(!this.technologyNames.includes(names.name)){
+              this.technologyNames.push(names.name);
+            }            
+          })
+        })
+      })
+    })
+  }
 
   techChecked(technology: string){
     if(this.checkedTech.includes(technology)){
