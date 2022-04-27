@@ -8,11 +8,12 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 
-public class DB {
+public class DB implements Database{
 
     private static Connection conn = null;
 
-    public static Connection getConnection(){
+    @Override
+    public Connection getConnection(){
         if(conn == null){
             try {
                 Properties props = loadProperties();
@@ -25,7 +26,8 @@ public class DB {
         return conn;
     }
 
-    private static Properties loadProperties(){
+    @Override
+    public Properties loadProperties(){
         try(FileInputStream fs = new FileInputStream("h2.properties")){
             Properties props = new Properties();
             props.load(fs);

@@ -60,9 +60,9 @@ public class ProductRepositoryImplementation implements ProductRepository {
                 }
             }
         }
-
-        // return findAll().stream().filter(p -> p.getTechnology().stream().anyMatch(names::contains)).collect(Collectors.toList());
         return list;
+//        return findAll().stream().filter(p -> p.getTechnology().stream().anyMatch(names::contains)).collect(Collectors.toList());
+
     }
 
     public List<Product> instantiateProduct(ResultSet rs) throws SQLException {
