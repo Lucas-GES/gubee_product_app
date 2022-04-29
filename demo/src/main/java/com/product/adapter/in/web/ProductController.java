@@ -16,8 +16,12 @@ public class ProductController {
     private ProductService service;
     private DBFactory dbFactory = new H2Factory();
 
+//    public ProductController(){
+//        this.service = new ProductService(dbFactory.getDatabase());
+//    }
+
     public ProductController(){
-        this.service = new ProductService(dbFactory.getDatabase());
+        this.service = new ProductService();
     }
 
     @GET

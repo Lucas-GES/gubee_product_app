@@ -1,6 +1,7 @@
 package com.product.application.service;
 
 
+import com.product.adapter.out.persistence.InMemoryRepository;
 import com.product.adapter.out.persistence.ProductRepositoryImplementation;
 import com.product.adapter.out.persistence.utils.Database;
 import com.product.application.port.in.ProductRepository;
@@ -12,10 +13,14 @@ public class ProductService {
 
     private ProductRepository repository;
 
-    public ProductService(){}
+//    public ProductService(){}
+//
+//    public ProductService(){
+//        repository = new ProductRepositoryImplementation(db.getConnection());
+//    }
 
-    public ProductService(Database db){
-        repository = new ProductRepositoryImplementation(db.getConnection());
+    public ProductService(){
+        repository = new InMemoryRepository();
     }
 
     public List<Product> find(){
