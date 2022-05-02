@@ -19,8 +19,8 @@ public class ProductService {
 //        repository = new ProductRepositoryImplementation(db.getConnection());
 //    }
 
-    public ProductService(){
-        repository = new InMemoryRepository();
+    public ProductService(ProductRepository productRepository){
+        repository = productRepository;
     }
 
     public List<Product> find(){

@@ -5,6 +5,9 @@ import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static io.restassured.RestAssured.given;
 
 @QuarkusTest
@@ -33,8 +36,9 @@ public class ProductControllerTest {
 
     @Test
     public void testFilterTechnologies(){
+
         given()
-                .when().get("/api/product/technology/1")
+                .when().get("/api/product/technology?arr=Java&arr=Kotlin")
                 .then()
                 .statusCode(200)
                 .assertThat()

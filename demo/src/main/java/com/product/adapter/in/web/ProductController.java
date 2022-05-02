@@ -1,5 +1,6 @@
 package com.product.adapter.in.web;
 
+import com.product.adapter.out.persistence.InMemoryRepository;
 import com.product.adapter.out.persistence.ProductRepositoryImplementation;
 import com.product.adapter.out.persistence.utils.*;
 import com.product.application.service.ProductService;
@@ -14,14 +15,13 @@ import java.util.List;
 public class ProductController {
 
     private ProductService service;
-    private DBFactory dbFactory = new H2Factory();
 
 //    public ProductController(){
-//        this.service = new ProductService(dbFactory.getDatabase());
+//        this.service = new ProductService(new ProductRepositoryImplementation(new DB()));
 //    }
 
     public ProductController(){
-        this.service = new ProductService();
+        this.service = new ProductService(new InMemoryRepository());
     }
 
     @GET

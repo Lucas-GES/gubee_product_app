@@ -13,7 +13,7 @@ public class DB implements Database{
     private static Connection conn = null;
 
     @Override
-    public Connection getConnection(){
+    public Connection connection(){
         if(conn == null){
             try {
                 Properties props = loadProperties();
@@ -26,7 +26,6 @@ public class DB implements Database{
         return conn;
     }
 
-    @Override
     public Properties loadProperties(){
         try(FileInputStream fs = new FileInputStream("h2.properties")){
             Properties props = new Properties();

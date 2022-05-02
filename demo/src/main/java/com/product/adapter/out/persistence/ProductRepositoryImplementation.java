@@ -1,5 +1,6 @@
 package com.product.adapter.out.persistence;
 
+import com.product.adapter.out.persistence.utils.Database;
 import com.product.application.port.in.ProductRepository;
 import com.product.adapter.out.persistence.utils.DbException;
 import com.product.domain.Product;
@@ -16,7 +17,7 @@ public class ProductRepositoryImplementation implements ProductRepository {
 
     private Connection conn;
 
-    public ProductRepositoryImplementation(Connection conn){this.conn = conn;}
+    public ProductRepositoryImplementation(Database database){conn = database.connection();}
 
     private List<Product> prepareStatement(String query){
         try(PreparedStatement st = conn.prepareStatement(query)){
