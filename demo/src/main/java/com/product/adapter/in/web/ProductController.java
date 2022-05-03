@@ -15,13 +15,11 @@ import java.util.List;
 public class ProductController {
 
     private ProductService service;
-
-//    public ProductController(){
-//        this.service = new ProductService(new ProductRepositoryImplementation(new DB()));
-//    }
+    private AbstractFactory factory;
 
     public ProductController(){
-        this.service = new ProductService(new InMemoryRepository());
+        this.factory = new RepositoryFactory();
+        this.service = new ProductService(factory.createInMemoryRepository());
     }
 
     @GET

@@ -53,16 +53,16 @@ public class ProductRepositoryImplementation implements ProductRepository {
 
     @Override
     public List<Product> filterTechnologies(List<String> names) {
-        List<Product> list = new ArrayList<>();
-        for(Product p : findAll()){
-            for(Technology t : p.getTechnology()){
-                if(names.contains(t.getName())){
-                    list.add(p);
-                }
-            }
-        }
-        return list;
-//        return findAll().stream().filter(p -> p.getTechnology().stream().anyMatch(names::contains)).collect(Collectors.toList());
+//        List<Product> list = new ArrayList<>();
+//        for(Product p : findAll()){
+//            for(Technology t : p.getTechnology()){
+//                if(names.contains(t.getName())){
+//                    list.add(p);
+//                }
+//            }
+//        }
+//        //return list;
+        return findAll().stream().filter(p -> p.getTechnology().stream().map(Technology::getName).anyMatch(names::contains)).collect(Collectors.toList());
 
     }
 
@@ -93,9 +93,14 @@ public class ProductRepositoryImplementation implements ProductRepository {
     }
 
     private Product mergeProduct(Product a, Product b){
-        if(!a.getTechnology().equals(b.getTechnology())) {
-            a.insertTechByTech(b.getTechnology());
+        for (Technology ta: a.getTechnology()){
+            for(Technology tb: b.getTechnology()){
+                if(ta.getName().equals(tb.getName())){
+                    return a;
+                }
+            }
         }
+        a.insertTechByTech(b.getTechnology());
         return a;
     }
 }

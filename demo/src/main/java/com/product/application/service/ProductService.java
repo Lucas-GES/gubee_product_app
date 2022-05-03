@@ -13,12 +13,6 @@ public class ProductService {
 
     private ProductRepository repository;
 
-//    public ProductService(){}
-//
-//    public ProductService(){
-//        repository = new ProductRepositoryImplementation(db.getConnection());
-//    }
-
     public ProductService(ProductRepository productRepository){
         repository = productRepository;
     }

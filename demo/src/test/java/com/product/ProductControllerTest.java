@@ -1,48 +1,67 @@
 package com.product;
 
+import com.product.adapter.in.web.ProductController;
+import com.product.application.service.ProductService;
+import com.product.domain.Product;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 
 
+import javax.ws.rs.core.Response;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import static io.restassured.RestAssured.given;
 
 @QuarkusTest
 public class ProductControllerTest {
 
-    @Test
-    public void testProductEndpoint() {
+    @InjectMocks
+    ProductService service;
 
-        given()
-                .when().get("/api/product")
-                .then()
-                .statusCode(200)
-                .assertThat()
-                .contentType(ContentType.JSON);
+    @Mock
+    ProductController controller;
+
+    private List<Product> products;
+
+    @BeforeEach
+    void setUp(){
+        service = Mockito.mock(ProductService.class);
+        controller = Mockito.mock(ProductController.class);
+
+        products = new ArrayList<>();
+        products.addAll(Arrays.asList(new Product(null, "test1", "test1", "m1", "t1"),
+                new Product(null, "test2", "test2", "m1", "t2"),
+                new Product(null, "test3", "test3", "m2", "t1"),
+                new Product(null, "test4", "test4", "m2", "t2")));
+    }
+
+    @Test
+    public void shouldFindAllTest() {
+        Mockito.when(service.find()).thenReturn(products);
+        Response response = controller.findAll();
+        Assertions.assertNotNull(response);
+        Assertions.assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
+        Assertions.assertNotNull(response.getEntity());
+        List<Product> entity = (List<Product>) response.getEntity();
+        Assertions.assertFalse(entity.isEmpty());
+        Assertions.assertEquals(products, entity);
     }
 
     @Test
     public void testFilterMarket(){
-        given()
-                .when().get("/api/product/market/Bis2bis")
-                .then()
-                .statusCode(200)
-                .assertThat()
-                .contentType(ContentType.JSON);
+
     }
 
     @Test
     public void testFilterTechnologies(){
 
-        given()
-                .when().get("/api/product/technology?arr=Java&arr=Kotlin")
-                .then()
-                .statusCode(200)
-                .assertThat()
-                .contentType(ContentType.JSON);
     }
 
 }
