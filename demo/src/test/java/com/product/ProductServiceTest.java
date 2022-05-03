@@ -1,6 +1,6 @@
 package com.product;
 
-import com.product.adapter.out.persistence.InMemoryRepository;
+import com.product.adapter.out.persistence.InMemoryProductRepository;
 import com.product.application.port.in.ProductRepository;
 import com.product.application.service.ProductService;
 import com.product.domain.Product;
@@ -32,7 +32,7 @@ public class ProductServiceTest {
 
     @BeforeEach
     void setUp(){
-        repository = Mockito.mock(InMemoryRepository.class);
+        repository = Mockito.mock(InMemoryProductRepository.class);
         service = new ProductService(repository);
 
         products  = new ArrayList<>();

@@ -1,7 +1,5 @@
 package com.product.adapter.in.web;
 
-import com.product.adapter.out.persistence.InMemoryRepository;
-import com.product.adapter.out.persistence.ProductRepositoryImplementation;
 import com.product.adapter.out.persistence.utils.*;
 import com.product.application.service.ProductService;
 

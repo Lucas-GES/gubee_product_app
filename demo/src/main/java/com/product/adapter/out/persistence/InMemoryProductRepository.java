@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class InMemoryRepository implements ProductRepository {
+public class InMemoryProductRepository implements ProductRepository {
 
     private List<Product> products = new ArrayList<>();
 
-    public InMemoryRepository(){
+    public InMemoryProductRepository(){
         this.AddProducts();
     }
 
