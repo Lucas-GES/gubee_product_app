@@ -3,8 +3,8 @@ package com.product.adapter.out.persistence;
 import com.product.adapter.out.persistence.utils.Database;
 import com.product.application.port.in.ProductRepository;
 import com.product.adapter.out.persistence.utils.DbException;
-import com.product.domain.Product;
-import com.product.domain.Technology;
+import com.product.domain.entities.Product;
+import com.product.domain.entities.Technology;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

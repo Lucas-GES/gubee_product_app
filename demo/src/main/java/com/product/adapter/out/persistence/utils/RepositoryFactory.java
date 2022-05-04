@@ -6,12 +6,7 @@ import com.product.application.port.in.ProductRepository;
 
 public class RepositoryFactory implements AbstractFactory{
     @Override
-    public ProductRepository createInMemoryRepository() {
+    public ProductRepository create() {
         return new InMemoryProductRepository();
-    }
-
-    @Override
-    public ProductRepository createProductRepositoryImplementation() {
-        return new ProductRepositoryImplementation(new DB());
     }
 }

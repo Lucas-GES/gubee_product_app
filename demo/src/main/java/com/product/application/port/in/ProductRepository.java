@@ -1,6 +1,6 @@
 package com.product.application.port.in;
 
-import com.product.domain.Product;
+import com.product.domain.entities.Product;
 
 import java.util.List;
 

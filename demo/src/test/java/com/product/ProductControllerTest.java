@@ -2,9 +2,8 @@ package com.product;
 
 import com.product.adapter.in.web.ProductController;
 import com.product.application.service.ProductService;
-import com.product.domain.Product;
+import com.product.domain.entities.Product;
 import io.quarkus.test.junit.QuarkusTest;
-import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

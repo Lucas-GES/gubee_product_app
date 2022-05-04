@@ -2,7 +2,7 @@ package com.product.application.service;
 
 
 import com.product.application.port.in.ProductRepository;
-import com.product.domain.Product;
+import com.product.domain.entities.Product;
 
 import java.util.List;
 

@@ -17,7 +17,7 @@ public class ProductController {
 
     public ProductController(){
         this.factory = new RepositoryFactory();
-        this.service = new ProductService(factory.createInMemoryRepository());
+        this.service = new ProductService(factory.create());
     }
 
     @GET

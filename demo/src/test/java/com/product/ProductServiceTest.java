@@ -3,7 +3,7 @@ package com.product;
 import com.product.adapter.out.persistence.InMemoryProductRepository;
 import com.product.application.port.in.ProductRepository;
 import com.product.application.service.ProductService;
-import com.product.domain.Product;
+import com.product.domain.entities.Product;
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

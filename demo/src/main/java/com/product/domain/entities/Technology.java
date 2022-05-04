@@ -1,4 +1,4 @@
-package com.product.domain;
+package com.product.domain.entities;
 
 import java.util.Objects;
 
@@ -13,10 +13,6 @@ public class Technology {
 
     public Technology(String name) {
         this.name = name;
-    }
-
-    public Integer getId() {
-        return id;
     }
 
     public String getName() {

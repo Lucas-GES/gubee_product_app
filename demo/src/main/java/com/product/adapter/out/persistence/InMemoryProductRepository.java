@@ -1,8 +1,8 @@
 package com.product.adapter.out.persistence;
 
 import com.product.application.port.in.ProductRepository;
-import com.product.domain.Product;
-import com.product.domain.Technology;
+import com.product.domain.entities.Product;
+import com.product.domain.entities.Technology;
 
 import java.util.ArrayList;
 import java.util.List;
