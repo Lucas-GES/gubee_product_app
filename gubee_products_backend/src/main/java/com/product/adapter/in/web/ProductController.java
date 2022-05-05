@@ -1,6 +1,6 @@
 package com.product.adapter.in.web;
 
-import com.product.adapter.out.persistence.utils.*;
+import com.product.adapter.out.persistence.factory.RepositoryFactory;
 import com.product.application.service.ProductService;
 
 import javax.ws.rs.*;
@@ -8,16 +8,17 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
+import static com.product.adapter.out.persistence.factory.RepositoryFactoryEnum.H2FACTORY;
+import static com.product.adapter.out.persistence.factory.RepositoryFactoryEnum.MEMORYREPOSITORY;
+
 
 @Path("/product")
 public class ProductController {
 
     private ProductService service;
-    private AbstractFactory factory;
 
     public ProductController(){
-        this.factory = new RepositoryFactory();
-        this.service = new ProductService(factory.create());
+        this.service = new ProductService(RepositoryFactory.createFactory(H2FACTORY));
     }
 
     @GET

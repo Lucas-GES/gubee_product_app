@@ -1,4 +1,6 @@
-package com.product.adapter.out.persistence.utils;
+package com.product.adapter.out.persistence.db;
+
+import com.product.adapter.out.persistence.db.exceptions.DbException;
 
 import java.io.FileInputStream;
 import java.io.IOException;

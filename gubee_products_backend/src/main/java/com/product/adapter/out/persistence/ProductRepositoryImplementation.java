@@ -1,8 +1,8 @@
 package com.product.adapter.out.persistence;
 
-import com.product.adapter.out.persistence.utils.Database;
+import com.product.adapter.out.persistence.db.Database;
+import com.product.adapter.out.persistence.db.exceptions.DbException;
 import com.product.application.port.in.ProductRepository;
-import com.product.adapter.out.persistence.utils.DbException;
 import com.product.domain.entities.Product;
 import com.product.domain.entities.Technology;
 
@@ -93,14 +93,14 @@ public class ProductRepositoryImplementation implements ProductRepository {
     }
 
     private Product mergeProduct(Product a, Product b){
-        for (Technology ta: a.getTechnology()){
-            for(Technology tb: b.getTechnology()){
-                if(ta.getName().equals(tb.getName())){
-                    return a;
+        var productA = a;
+        for (Technology techA: a.getTechnology()){
+            for(Technology techB: b.getTechnology()){
+                if(!techA.getName().equals(techB.getName())){
+                    productA.insertTechByTech(b.getTechnology());
                 }
             }
         }
-        a.insertTechByTech(b.getTechnology());
-        return a;
+        return productA;
     }
 }

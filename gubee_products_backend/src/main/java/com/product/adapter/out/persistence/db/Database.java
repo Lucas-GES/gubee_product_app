@@ -1,4 +1,4 @@
-package com.product.adapter.out.persistence.utils;
+package com.product.adapter.out.persistence.db;
 
 import java.sql.Connection;
 

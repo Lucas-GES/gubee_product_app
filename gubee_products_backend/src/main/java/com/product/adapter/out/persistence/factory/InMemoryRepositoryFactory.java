@@ -1,12 +1,12 @@
-package com.product.adapter.out.persistence.utils;
+package com.product.adapter.out.persistence.factory;
 
 import com.product.adapter.out.persistence.InMemoryProductRepository;
-import com.product.adapter.out.persistence.ProductRepositoryImplementation;
 import com.product.application.port.in.ProductRepository;
 
-public class RepositoryFactory implements AbstractFactory{
-    @Override
+public class InMemoryRepositoryFactory implements RepositoryFactory {
+
     public ProductRepository create() {
         return new InMemoryProductRepository();
     }
+
 }
