@@ -43,7 +43,7 @@ public class ProductServiceTest {
     }
 
     @Test
-    void shouldFindAllTest(){
+    void shouldFindAll(){
         when(repository.findAll()).thenReturn(products);
         List<Product> result = service.find();
         assertEquals(result, products);

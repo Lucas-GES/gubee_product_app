@@ -17,8 +17,12 @@ public class ProductController {
 
     private ProductService service;
 
+    public ProductController(ProductService service){
+        this.service = service;
+    }
+
     public ProductController(){
-        this.service = new ProductService(RepositoryFactory.createFactory(H2FACTORY));
+        this.service = new ProductService(RepositoryFactory.createFactory(MEMORYREPOSITORY));
     }
 
     @GET
