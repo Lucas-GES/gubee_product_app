@@ -7,13 +7,23 @@ import static com.product.adapter.out.persistence.factory.RepositoryFactoryEnum.
 
 public interface RepositoryFactory {
 
-    static ProductRepository createFactory(Enum repository) {
-        if(repository == MEMORYREPOSITORY){
-            return new InMemoryRepositoryFactory().create();
-        }else if(repository == H2FACTORY){
-            return new DBRepositoryFactory().create();
-        }else{
-            throw new RuntimeException("Invalid repository");
+    String defaultRepository = "MEMORYREPOSITORY";
+
+    static ProductRepository createDefaultFactory() {
+        return createFactory(RepositoryFactoryEnum.valueOf(defaultRepository));
+    }
+
+    static ProductRepository createFactory(RepositoryFactoryEnum repository) {
+        ProductRepository productRepository;
+        switch (repository){
+            case MEMORYREPOSITORY:
+                productRepository =  new InMemoryRepositoryFactory().create();
+                break;
+            case H2FACTORY:
+                productRepository =  new DBRepositoryFactory().create();
+                break;
+            default: productRepository =  createDefaultFactory();
         }
+        return productRepository;
     }
 }

@@ -8,8 +8,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-import static com.product.adapter.out.persistence.factory.RepositoryFactoryEnum.H2FACTORY;
-import static com.product.adapter.out.persistence.factory.RepositoryFactoryEnum.MEMORYREPOSITORY;
 
 
 @Path("/product")
@@ -22,7 +20,7 @@ public class ProductController {
     }
 
     public ProductController(){
-        this.service = new ProductService(RepositoryFactory.createFactory(MEMORYREPOSITORY));
+        this.service = new ProductService(RepositoryFactory.createDefaultFactory());
     }
 
     @GET

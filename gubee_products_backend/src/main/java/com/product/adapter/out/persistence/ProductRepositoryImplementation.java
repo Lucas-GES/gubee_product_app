@@ -92,15 +92,18 @@ public class ProductRepositoryImplementation implements ProductRepository {
                 }).collect(Collectors.toList());
     }
 
-    private Product mergeProduct(Product a, Product b){
-        var productA = a;
-        for (Technology techA: a.getTechnology()){
+    public Product mergeProduct(Product a, Product b){
+        var productA = new ArrayList<Technology>();
+        for(Technology techA: a.getTechnology()){
             for(Technology techB: b.getTechnology()){
                 if(!techA.getName().equals(techB.getName())){
-                    productA.insertTechByTech(b.getTechnology());
+                    productA.add(techB);
                 }
             }
         }
-        return productA;
+        a.insertTechByTech(productA);
+        return a;
+
     }
+
 }
