@@ -39,7 +39,7 @@ public class ProductRepositoryImplementationTest {
     }
 
     @Test
-    @DisplayName("Deveria ficar vazio se itens não coincidem")
+    @DisplayName("Deveria manter as mesmas techs se forem iguais")
     void shouldNotMergeProductTest(){
         ProductRepositoryImplementation repositoryImplementation = new ProductRepositoryImplementation(db);
         Product a = new Product(null, "test1", "test1", "m1", "t1");

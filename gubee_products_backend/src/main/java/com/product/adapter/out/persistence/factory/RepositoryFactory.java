@@ -7,7 +7,7 @@ import static com.product.adapter.out.persistence.factory.RepositoryFactoryEnum.
 
 public interface RepositoryFactory {
 
-    String defaultRepository = "MEMORYREPOSITORY";
+    String defaultRepository = "H2FACTORY";
 
     static ProductRepository createDefaultFactory() {
         return createFactory(RepositoryFactoryEnum.valueOf(defaultRepository));
