@@ -20,7 +20,7 @@ public class ProductRepositoryImplementationTest {
     DB db = new DB();
 
     @Test
-    @DisplayName("Deveria adicionar somente itens nao repetidos")
+    @DisplayName("Deveria adicionar somente itens não repetidos")
     void mergeProductNotEqualsTest(){
         ProductRepositoryImplementation repositoryImplementation = new ProductRepositoryImplementation(db);
         Product a = new Product(null, "test1", "test1", "m1", "t1");
@@ -39,7 +39,7 @@ public class ProductRepositoryImplementationTest {
     }
 
     @Test
-    @DisplayName("Deveria ficar vazio se itens nao coincidem")
+    @DisplayName("Deveria ficar vazio se itens não coincidem")
     void shouldNotMergeProductTest(){
         ProductRepositoryImplementation repositoryImplementation = new ProductRepositoryImplementation(db);
         Product a = new Product(null, "test1", "test1", "m1", "t1");
