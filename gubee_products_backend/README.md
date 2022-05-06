@@ -1,4 +1,4 @@
-# demo Project
+# Gubee Products Project
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
