@@ -35,4 +35,12 @@ public class Technology {
     public int hashCode() {
         return Objects.hash(id, name);
     }
+
+    @Override
+    public String toString() {
+        return "Technology{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

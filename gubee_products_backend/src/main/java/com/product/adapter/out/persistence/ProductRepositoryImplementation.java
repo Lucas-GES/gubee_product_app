@@ -93,19 +93,22 @@ public class ProductRepositoryImplementation implements ProductRepository {
     }
 
     public Product mergeProduct(Product a, Product b){
-        var techA = a.getTechnology();
-        var techB = b.getTechnology();
-        var techNameA = new ArrayList<String>();
-        var techNameB = new ArrayList<String>();
-        var diference = new ArrayList<String>();
-        techA.forEach(t -> techNameA.add(t.getName()));
-        techB.forEach(t -> techNameB.add(t.getName()));
+        Product merged = new Product(a);
+        var techNameA = a.getTechnologyNames();
+        var techNameB = b.getTechnologyNames();
+        List<String> difference = new ArrayList<>();
 
-        techNameB.forEach(nameB -> { if(!techNameA.contains(nameB)) diference.add(nameB);});
-
-        diference.forEach(a::insertTechnology);
-
-        return a;
+        for(String name: techNameB){
+            if(!techNameA.contains(name)){
+                difference.add(name);
+            }
+        }
+        if(difference.size() > 0) {
+            for (String name : difference) {
+                merged.insertTechnology(name);
+            }
+        }
+        return merged;
     }
 
 }
